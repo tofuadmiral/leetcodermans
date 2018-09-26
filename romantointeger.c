@@ -70,5 +70,4 @@ int romanToInt(char* s) {
         }
     }
     return sum;
-
 }
