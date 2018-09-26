@@ -15,15 +15,35 @@ int romanToInt(char* s) {
         
         // case I
         if (s[i] == 'I'){
-            ones++;       
+            
+            if (s[i + 1] == 'X'){
+                ones--;
+            }
+            else if(s[i + 1] == 'V'){
+                ones--;
+            } 
+            else{
+                ones++;
+            }
+            
         }
         // case V
         if(s[i] == 'V'){
             fives++;
         }
+        
         // case X
         if(s[i] == 'X'){
-            tens++;
+            if (s[i + 1] == 'L'){
+                tens--;
+            }
+            else if(s[i + 1] == 'C'){
+                tens--;
+            } 
+            else{
+                tens++;
+            }
+            
         }
           // case L
         if(s[i] == 'L'){
@@ -31,7 +51,16 @@ int romanToInt(char* s) {
         }
           // case C
         if(s[i] == 'C'){
-            hundos++;
+            if (s[i + 1] == 'D'){
+                hundos--;
+            }
+            else if(s[i + 1] == 'M'){
+                hundos--;
+            } 
+            else{
+                hundos++;
+            }
+            
         }
           // case D
         if(s[i] == 'D'){
@@ -42,5 +71,6 @@ int romanToInt(char* s) {
             thousands++;
         }
     }
-    return (ones + fives*5 + tens*10 + fifties*50 + hundos*100 + fhundos*500 + thousands*1000 );
+    return (ones + fives*5 + tens*10 + fifties*50 + hundos*100 + fhundos*500 + thousands*1000);
+
 }
