@@ -1,13 +1,7 @@
 int romanToInt(char* s) {
     // convert a roman numeral to a regular integer
     
-    int ones = 0;
-    int fives= 0; 
-    int tens = 0;
-    int fifties= 0;
-    int hundos= 0;
-    int fhundos= 0;
-    int thousands = 0;
+    int sum = 0;
     
     // loop for each item in the string
 
@@ -16,61 +10,65 @@ int romanToInt(char* s) {
         // case I
         if (s[i] == 'I'){
             
-            if (s[i + 1] == 'X'){
-                ones--;
+            if (s[i + 1] == 'V'){
+                sum--;
             }
-            else if(s[i + 1] == 'V'){
-                ones--;
+            else if(s[i + 1] == 'X'){
+                sum--;
             } 
+            
             else{
-                ones++;
+                sum++;
             }
             
         }
         // case V
         if(s[i] == 'V'){
-            fives++;
+            sum+=5;
         }
         
         // case X
         if(s[i] == 'X'){
             if (s[i + 1] == 'L'){
-                tens--;
+                sum-=10;
             }
             else if(s[i + 1] == 'C'){
-                tens--;
+                sum-=10;
             } 
             else{
-                tens++;
+                sum+=10;
             }
             
         }
           // case L
         if(s[i] == 'L'){
-            fifties++;
+            sum+=50;
         }
           // case C
         if(s[i] == 'C'){
             if (s[i + 1] == 'D'){
-                hundos--;
+                sum-=100;
             }
             else if(s[i + 1] == 'M'){
-                hundos--;
+                sum-=100;
             } 
             else{
-                hundos++;
+                sum+=100;
             }
             
         }
           // case D
         if(s[i] == 'D'){
-            fhundos++;
+            sum+=500;
         }
           // case M
         if(s[i] == 'M'){
-            thousands++;
+            sum+=1000;
+        }
+        if(s[i] == '\0'){
+            break;
         }
     }
-    return (ones + fives*5 + tens*10 + fifties*50 + hundos*100 + fhundos*500 + thousands*1000);
+    return sum;
 
 }
