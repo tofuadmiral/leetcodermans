@@ -9,12 +9,19 @@ typedef struct {
 
 /** Initialize your data structure here. */
 MyLinkedList* myLinkedListCreate() {
-    
+    val = 0;
+    next = NULL;
 }
 
 /** Get the value of the index-th node in the linked list. If the index is invalid, return -1. */
 int myLinkedListGet(MyLinkedList* obj, int index) {
-    
+    int counter = 0;
+    MyLinkedList cnode;
+    while (cnode.next != NULL && counter != index){
+        cnode = cnode.next;
+        counter++;
+    }
+    return cnode.val;
 }
 
 /** Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list. */
