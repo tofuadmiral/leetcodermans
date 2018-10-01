@@ -13,20 +13,20 @@ MyLinkedList* myLinkedListCreate() {
     // arrow notation bc obj is a pointer
     obj->val=0;
     obj->next=NULL;
-    obj->length=-1; // -1 bc just head, we start at zero
+    obj->size=-1; // -1 bc just head, we start at zero
     return obj;
     // this obj has enough memory for a list, and also has ONLY the head pointer
 }
 
 /** Get the value of the index-th node in the linked list. If the index is invalid, return -1. */
 int myLinkedListGet(MyLinkedList* obj, int index) {
-    if(index > obj->size()) return -1; // bc we're above the size
+    if(index > obj->size) return -1; // bc we're above the size
     if (index < 0) return -1; // invalid question bc starts at 0
     // obj is just a pointer to the list, so we can re-reference that pointer to
     // another pointer i.e. the "next", and doing that won't actually change anything
     // in the actual list, since obj is just pointing to that existing list.
     int counter =-1;
-    while(counter <= size && != index){
+    while(counter <= obj->size && counter != index){
         obj = obj->next;
         counter++;
     }
@@ -37,12 +37,26 @@ int myLinkedListGet(MyLinkedList* obj, int index) {
 
 /** Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list. */
 void myLinkedListAddAtHead(MyLinkedList* obj, int val) {
-    
+    obj->size++; // bigger now
+    MyLinkedList *p = (MyLinkedList*)malloc(sizeof(MyLinkedList));
+    p->val = val;
+    p->next = obj->next; // preserve next item via pointing with pointer
+    obj->next = p->next; // repoint next to the pointer
 }
 
 /** Append a node of value val to the last element of the linked list. */
 void myLinkedListAddAtTail(MyLinkedList* obj, int val) {
-    
+    // traverse until next = null, then point to new pointer and then point that to null
+    MyLinkedList *p = (MyLinkedList*)malloc(sizeof(MyLinkedList));
+                    // this line works via type conversion of the
+                    // malloc pointer to the mylinkedlist pointer, important bc
+                    // typecasting can work bw pointer elements then
+    p->val = val;
+    p->next = NULL;
+    while(obj->next!=NULL){
+        obj = obj->next;
+    }
+    obj->next=p;
 }
 
 /** Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted. */
