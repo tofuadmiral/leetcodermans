@@ -86,7 +86,19 @@ void myLinkedListAddAtIndex(MyLinkedList* obj, int index, int val) {
 
 /** Delete the index-th node in the linked list, if the index is valid. */
 void myLinkedListDeleteAtIndex(MyLinkedList* obj, int index) {
-    
+    // delete means dereference it
+    // get to the right spot
+    int counter =-1;
+    while(counter <= obj->size && counter != index-1){
+        obj = obj->next;
+        counter++;
+    }
+    // now we at node right before delete, skip it over
+    MyLinkedList *p = (MyLinkedList*)malloc(sizeof(MyLinkedList));//create new
+    p->next = obj->next;
+    p = p->next;
+    obj->next = p;
+    obj->size--;
 }
 
 void myLinkedListFree(MyLinkedList* obj) {
