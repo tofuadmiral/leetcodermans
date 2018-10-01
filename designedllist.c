@@ -48,9 +48,9 @@ void myLinkedListAddAtHead(MyLinkedList* obj, int val) {
 void myLinkedListAddAtTail(MyLinkedList* obj, int val) {
     // traverse until next = null, then point to new pointer and then point that to null
     MyLinkedList *p = (MyLinkedList*)malloc(sizeof(MyLinkedList));
-                    // this line works via type conversion of the
-                    // malloc pointer to the mylinkedlist pointer, important bc
-                    // typecasting can work bw pointer elements then
+    // this line works via type conversion of the
+    // malloc pointer to the mylinkedlist pointer, important bc
+    // typecasting can work bw pointer elements then
     p->val = val;
     p->next = NULL;
     while(obj->next!=NULL){
@@ -61,7 +61,27 @@ void myLinkedListAddAtTail(MyLinkedList* obj, int val) {
 
 /** Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted. */
 void myLinkedListAddAtIndex(MyLinkedList* obj, int index, int val) {
-    
+    if(obj->size == index){
+        // add to end of list
+        myLinkedListAddAtTail(obj, val);
+    }
+    else if(index > obj->size){
+        printf("the index is larger than the size");
+    }
+    else{
+        // get to the right spot
+        int counter =-1;
+        while(counter <= obj->size && counter != index-1){
+            obj = obj->next;
+            counter++;
+        }
+        // now we at right spot, one before the index
+        MyLinkedList *p = (MyLinkedList*)malloc(sizeof(MyLinkedList));//create new
+        p->val=val;
+        p->next=obj->next; // preserve location of next
+        obj->next=p; // reassign the next index
+        obj->size++; // increase size
+    }
 }
 
 /** Delete the index-th node in the linked list, if the index is valid. */
