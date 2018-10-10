@@ -1,9 +1,28 @@
-#include <bits/stdc++.h>
-
+#include <iostream> 
+#include <vector> 
 using namespace std;
 
 
-int main()
-{
+int main(){
+
+    int arraySize;
+    
+    // ask the user for an array of numbers
+    cout << "How big do you want your array to be? " << endl;
+    cin >> arraySize;
+    std::vector<int> v(arraySize, 0);
+
+    cout << "Cool! Now input the numbers for that array" << endl;
+    for(int i=0; i<arraySize; i++){
+        cout << "Input number " << i << endl;
+        cin >> v[i];
+    }
+
+    // print out array so user can be sure that it's what they want
+    // first, make an iterator
+    for(int i =0; i<v.size(); i++){
+        cout << "\n" << v[i] << endl;
+    }
+
     return 0;
 }
