@@ -9,9 +9,25 @@ int jumpingOnClouds(vector<int> c) {
     int currcloud = 0;
     int numclouds = static_cast<int>(c.size());
     int jumps = 0;
-    while(currcloud != numclouds){
-        
+  
+    
+    while(currcloud < numclouds){
+        if(c[currcloud+2] == 0 || c[currcloud+1] == 1){
+            // that means we can jump 2!
+            jumps++;
+            currcloud +=2;
+        }
+        else{
+            //always possible to win, so only other case means jump one
+            jumps++;
+            currcloud++;
+        }
     }
+    // special case if only two clouds
+    if (numclouds ==2){
+        jumps =2;
+    }
+    return jumps-1;
 
 }
 
