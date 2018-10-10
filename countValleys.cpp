@@ -16,27 +16,24 @@ int countingValleys(int n, string s) {
     // iterate thru the string
     for(int i =0; i<n; i++){ 
         
-        
         // now figure out whether in valley or not 
         if(pos==0 && s[i]=='D'){
-            // this means were beginning a valley, so start valley counter to 1
+            // at sea, going down, starting valley 
             numvalleys++;
         }
 
         if(pos==-1 && s[i]=='U'){
-            // we're exiting a valley so finish off the valley that we started using numvalleys 
+            // below sea, going up, so ending valley
             numvalleys++;
         }
         
-        
         // calculate our relative position
-        if(s[i] = 'U'){
+        if(s[i] == 'U'){
             pos++;
         }
-        else{
+        else if(s[i] =='D'){
             pos--;
         }
-        
 
     }
     
