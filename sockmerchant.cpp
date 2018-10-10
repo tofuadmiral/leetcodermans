@@ -6,23 +6,33 @@ vector<string> split_string(string);
 
 // Complete the sockMerchant function below.
 int sockMerchant(int n, vector<int> ar) {
+    
     // ar is a vector, dynamically resizing array. n is the number of elements we have
     // ar is the socks data
+    
     // let's make a map, key is the sock color, value is the number of those socks
     std::map<int, int> sockLookup;
+    
+    // add everything to the map 
     for (int i =0; i<n;i++){
+        
+        // if color isn't already in the map, add it to the map 
         if(sockLookup.find(ar[i]) == sockLookup.end()){
             // key isn't in the map, so insert it
             sockLookup.insert(std::pair<int, int>(ar[i], 1));
         }
-        else { // this means key is in it
-            sockLookup[ar[i]]++; // at the key ar[i] i.e. color, increment it 
+        else { // this means key IS in the map, so we just have to increment it 
+            sockLookup[ar[i]]++; // at the key ar[i] i.e. color, increment val so 2 socks of that 
+                                // which means we have 2 socks of that color now 
         }
     }
-    // now we have counts, so return how many pairs we have
+    
+    // now we have a map of which key and which sock, so return how many pairs we have
     int sum =0;
+    
+    // go thru map of colors, and see how many we have of each 
     for (int i =0; i<n;i++){
-        // go thru array, lookup, and if val ==2 then add to sum 
+        
         if (sockLookup[ar[i]] == 2){
             sum++;
         }
