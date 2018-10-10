@@ -11,9 +11,9 @@ int sockMerchant(int n, vector<int> ar) {
     // let's make a map, key is the sock color, value is the number of those socks
     std::map<int, int> sockLookup;
     for (int i =0; i<n;i++){
-        if(std::map::count(ar[i]) == 0){
+        if(sockLookup.find(ar[i]) == sockLookup.end()){
             // key isn't in the map, so insert it
-            sockLookup.insert(std::pair<int, int>(ar[i], 1)); // key is color, val = how many
+            sockLookup.insert(std::pair<int, int>(ar[i], 1));
         }
         else { // this means key is in it
             sockLookup[ar[i]]++; // at the key ar[i] i.e. color, increment it 
