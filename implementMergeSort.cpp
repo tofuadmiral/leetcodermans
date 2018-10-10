@@ -6,7 +6,7 @@ using namespace std;
 int main(){
 
     int arraySize;
-    
+
     // ask the user for an array of numbers
     cout << "How big do you want your array to be? " << endl;
     cin >> arraySize;
@@ -23,6 +23,18 @@ int main(){
     for(int i =0; i<v.size(); i++){
         cout << "\n" << v[i] << endl;
     }
+
+    // now actually sort the array
+
+    void mergeSort(std::vector<int> array){
+        if(array.size()==1){
+            return array;
+        }
+        else{
+            int mid = (leftbegin + rightend) / 2;
+        }
+    }
+
 
     return 0;
 }
