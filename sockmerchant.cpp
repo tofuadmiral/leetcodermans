@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 
+// if we include using namespace std, we don't have to write std::map all the time
 using namespace std;
 
 vector<string> split_string(string);
@@ -7,37 +8,28 @@ vector<string> split_string(string);
 // Complete the sockMerchant function below.
 int sockMerchant(int n, vector<int> ar) {
     
+    // this is what we'll return at the end
+    int sum = 0;
+    
     // ar is a vector, dynamically resizing array. n is the number of elements we have
     // ar is the socks data
     
-    // let's make a map, key is the sock color, value is the number of those socks
+    // let's make a map, key is the sock color, val = number of pairs found
     std::map<int, int> sockLookup;
     
-    // add everything to the map 
-    for (int i =0; i<n;i++){
-        
-        // if color isn't already in the map, add it to the map 
-        if(sockLookup.find(ar[i]) == sockLookup.end()){
-            // key isn't in the map, so insert it
-            sockLookup.insert(std::pair<int, int>(ar[i], 1));
-        }
-        else { // this means key IS in the map, so we just have to increment it 
-            sockLookup[ar[i]]++; // at the key ar[i] i.e. color, increment val so 2 socks of that 
-                                // which means we have 2 socks of that color now 
-        }
+    // now loop through ar and add to the map
+    for (int i=0; i<n; i++){
+        sockLookup[ar[i]]++; // if it doesn't exist, initialized then incremented to 1
+                            // if it does, then incremented to n+1
     }
     
-    // now we have a map of which key and which sock, so return how many pairs we have
-    int sum =0;
-    
-    // go thru map of colors, and see how many we have of each 
-    for (int i =0; i<n;i++){
-        
-        if (sockLookup[ar[i]] == 2){
-            sum++;
-        }
+    // now that we have all the sock values in the map, iterate through the map and add
+    map<int, int>::iterator it; 
+    for(it=sockLookup.begin(); it!=sockLookup.end(); it++){
+        sum += (it->second)/2; // give it the val of the number of pairs in each key 
     }
-    return sum;
+    
+    return sum; 
     
 }
 
