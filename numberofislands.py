@@ -21,6 +21,11 @@ class Solution:
                 if grid[i][j] == '1':
                     
                     # run a depth first search here
+
+                    # our DFS needs our current position, and our grid of elements
+                    depthFirst(i, j, grid)
+                else:
+                    pass # i.e. go to the next item, keep looking for that one 
                     
             
         
