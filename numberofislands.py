@@ -1,6 +1,5 @@
 class Solution:
-
-
+    
     def depthFirst(self, i, j, grid):
         # this is our function that will perform the depth first search 
         # we can change grid value as we visit to make it a 
@@ -28,27 +27,13 @@ class Solution:
         up = i-1
         down = i+1
 
-
         self.depthFirst(up, j, grid)
         self.depthFirst(down, j, grid)
         self.depthFirst(i, left, grid)
         self.depthFirst(i, right, grid)
 
-
     def numIslands(self, grid):
-        """
-        :type grid: List[List[str]]
-        2D array of lists of lists, 
-        :rtype: int
-        """
-        
-        # count the number of islands
-        # can connect horizontally or vertically 
-        # all edges are water
         counter = 0
-        
-        # run a for loop to step through the list of lists
-        
         for i in range(len(grid)): # for each row 
             
             for j in range(len(grid[0])): # for each column in a row 
@@ -61,8 +46,6 @@ class Solution:
 
                     self.depthFirst(i, j, grid)
                     counter+=1 # since we did a depth first, we found the associated island! 
-
                 else:
                     pass # i.e. go to the next item, keep looking for ones
-
         return counter
