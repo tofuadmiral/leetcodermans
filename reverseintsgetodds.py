@@ -1,5 +1,4 @@
 import sys
-
 def isOdd(curr):
     # takes an integer and checks if it has odd digits
     for i in str(curr):
@@ -9,7 +8,6 @@ def isOdd(curr):
 
 for line in sys.stdin:
     # do for each line of input
-    
     ops=0
     curr = int(line)
     
@@ -17,9 +15,4 @@ for line in sys.stdin:
     while(isOdd(curr) == True):
         curr=curr+int(str(curr)[::-1])
         ops+=1
-        
     print(ops, curr)
-    
-    
-        
-    
