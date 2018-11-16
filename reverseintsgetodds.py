@@ -1,6 +1,7 @@
 import sys
 def isOdd(curr):
     # takes an integer and checks if it has odd digits
+    # create a dict
     for i in str(curr):
         if int(i)%2 != 0:
             return True
