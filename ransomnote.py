@@ -12,25 +12,23 @@ def checkMagazine(magazine, note):
     # this would be linear time, key = word, value = 1
     words={}
     for i in magazine:
-        # add to the words if it's not there, but if it is, add that we have two words
-        if i not in magazine:
-            words[i]=1
-        if i in magazine:
-            words[i] += words[i]
-    
-    flag=True
-    # now, go through the note array and make sure we have all the words 
-    for i in note:
         if i not in words:
-            flag = False
-    
+            words[i]=1
+        elif i in words:
+            words[i]+=1  # if already exists, increment by 1
 
+    # now, check if we have all the words we need
+    flag=True
+    for i in note:
+        if i in words and words[i]!=0:
+            words[i]-=1
+        else:
+            flag=False
+    
     if flag:
         print('Yes')
     else:
         print('No')
-
-
 
 
 
