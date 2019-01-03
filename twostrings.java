@@ -26,11 +26,18 @@ public class Solution {
         boolean nosub = true;
         int counter=0;
         while(nosub==true && counter<s2.length()){
-            if (s1letters.containsKey(s2.charAt(counter))) nosub=false;
+            if (s1letters.containsKey(s2.charAt(counter))) {
+                nosub=false;
+                break;
+            }
             counter++;
         }
-        if(nosub){return "YES";}
-        return "NO";
+        if(nosub==true){
+            return "NO";
+        }
+        else{
+            return "YES";
+        }
 
     }
 
