@@ -14,23 +14,23 @@ public class Solution {
         
         // create a dictionary/hashmap in java, prep for amazon interview
         
-        HashMap<String, int> s1letters = new HashMap <String, int>();
+        HashMap<Character, Integer> s1letters = new HashMap <Character, Integer>();
 
         // determine if s1 and s2 share a common substring
         for(int i=0; i<s1.length(); i++){
             // iterate through s1 and add to a dictionary of strings
-            s1letters.put(s1.charAt(i), 1)
+            s1letters.put(s1.charAt(i), 1);
         }
 
         // now we have a dictionary of strings to iterate through
         boolean nosub = true;
         int counter=0;
         while(nosub==true && counter<s2.length()){
-            if (s1letters.containsKey(s2.charAt(i))) nosub=false;
-            i++;
+            if (s1letters.containsKey(s2.charAt(counter))) nosub=false;
+            counter++;
         }
-        if(nosub){System.out.println("YES");}
-        else{System.out.println("NO");}
+        if(nosub){return "YES";}
+        return "NO";
 
     }
 
