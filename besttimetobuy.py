@@ -7,8 +7,8 @@ class Solution(object):
         n=len(prices)
         big=0
         for i in range(n):
-            for j in range(n):
-                if i<j and prices[i]<prices[j]:
+            for j in range(i, n):
+                if prices[i]<prices[j]:
                     if prices[j]-prices[i]>big:
                         big=prices[j]-prices[i]
         return big
