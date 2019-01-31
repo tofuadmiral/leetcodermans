@@ -1,4 +1,4 @@
-def sudoku_solve(board):
+Cdef sudoku_solve(board):
   pass # your code goes here]
 
 """

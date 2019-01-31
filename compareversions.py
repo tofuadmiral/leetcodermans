@@ -15,4 +15,3 @@ class Solution(object):
             elif int(v1[i])<int(v2[i]): return -1
             else: continue
         return 0
-        
