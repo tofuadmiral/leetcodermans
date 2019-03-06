@@ -15,6 +15,7 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+
 #include <iostream>
 #include <vector>
 #include <map>
@@ -43,8 +44,8 @@ public:
     vector<int> convertToArray(ListNode* head){
         // convert the singly linked list into a sorted array
         vector<int> numbers;
-        while(*head.next()!=null){
-            numbers.push_back(*head.val());
+        while((*head).next()!=NULL){
+            numbers.push_back((*head).val);
         }
         
     }
