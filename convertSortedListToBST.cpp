@@ -15,38 +15,45 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-#include <iostream>
 #include <vector>
 #include <map>
+#include <iostream>
 using namespace std;
 
 class Solution {
 public:
     TreeNode* sortedListToBST(ListNode* head) {
-        // elements are in a single list, sorted in ascending
-        // convert to height balanced binary search tree
-        // this means middle value at top, then go greater and less than 
-        // accordingly
-        
+        // create a height balanced BST, i.e. depth never differs by two
         /*
-            algorithm:
-            - split into half and take middle value
-                - edge: if only 2, or only one
-            - call recursively on the right half and left half 
-            - each call, add to the list 
-            - function takes in current list, 
+            with an array, we'd start at middle and make root, then recursively 
+            call the function on the array and keep adding children 
+            so let's just put this linked list into an array (o(n)) linear time
+            then do the same thing! to make the tree should take O(n) time as well
         
         */
+        vector<int> nums = convertToVector(head);
         
+        // now we have our array of numbers, so call our helper function to 
+        // construct our tree from that
+        TreeNode* root = arrayToBST(nums);
+        return root;
+    
     }
     
-    vector<int> convertToArray(ListNode* head){
-        // convert the singly linked list into a sorted array
-        vector<int> numbers;
-        while(*head.next()!=null){
-            numbers.push_back(*head.val());
+    TreeNode* arrayToBST(vector<int> nums){
+        int numItems=nums.size();
+        return TreeNode(nums[0])
+    }
+    
+    
+    vector<int> convertToVector(ListNode* head){
+        // take in our head of linked list, then convert to an array
+        vector<int> nums;
+        node=*head;
+        while(node!=NULL){
+            nums.push_back(node.val);
+            node=node.next();
         }
-        
+        return nums;
     }
-    
 };
