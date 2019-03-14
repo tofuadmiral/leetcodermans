@@ -41,6 +41,17 @@ struct ListNode {
 
 class Solution {
 public:
+
+    int main(){
+
+        ListNode* root = new ListNode(4);
+        (*root).next =
+        
+        TreeNode* returnNode = sortedListToBST(head);
+
+        return 0;
+    }
+
     TreeNode* sortedListToBST(ListNode* head) {
         // create a height balanced BST, i.e. depth never differs by two
         /*
