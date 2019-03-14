@@ -20,6 +20,22 @@
 #include <iostream>
 using namespace std;
 
+
+struct TreeNode {
+      int val;
+      TreeNode *left;
+      TreeNode *right;
+      TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+  };
+
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode(int x) : val(x), next(NULL) {}
+};
+
+
+
 class Solution {
 public:
     TreeNode* sortedListToBST(ListNode* head) {
@@ -49,10 +65,10 @@ public:
     vector<int> convertToVector(ListNode* head){
         // take in our head of linked list, then convert to an array
         vector<int> nums;
-        node=*head;
-        while(node!=NULL){
-            nums.push_back(node.val);
-            node=node.next();
+        ListNode* node=head;
+        while((*node).next != NULL){
+            nums.push_back((*node).val);
+            node=(*node).next;
         }
         return nums;
     }
