@@ -58,7 +58,10 @@ public:
     
     TreeNode* arrayToBST(vector<int> nums){
         int numItems=nums.size();
-        return TreeNode(nums[0])
+        // now make a treenode from an element in the array
+        TreeNode *root = new TreeNode(nums[0]);
+        cout << (*root).val << "successfully converted the root of the array ";
+
     }
     
     
@@ -72,4 +75,7 @@ public:
         }
         return nums;
     }
+
+
+    
 };
