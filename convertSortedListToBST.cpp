@@ -34,6 +34,9 @@ struct ListNode {
     ListNode(int x) : val(x), next(NULL) {}
 };
 
+// create a main function to call the solution function
+
+
 
 
 class Solution {
@@ -77,5 +80,5 @@ public:
     }
 
 
-    
+
 };
