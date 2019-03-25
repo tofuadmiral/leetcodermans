@@ -14,7 +14,6 @@ def rotLeft(a, d):
     for i in range(len(a)):
         temp = a[i] 
         a[i] = a[i-d]
-        a[]
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
