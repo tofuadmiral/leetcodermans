@@ -4,27 +4,36 @@ class Solution(object):
         :type s: str
         :rtype: int
         
-        longest substring with no repeating characters
+        no repeats, longest substring
         
-        abcabcbb
+        go through, make every possible substring without repeats,
         
-        therefor longest is abc, bc once abca then repeats
+        store seen chars in the set, overwrite the set when we know 
+        we have reached the seen chars 
         
-        naive approach:
-            find every possible substring and see which ones 
-            don't repeat, then keep track of that longest one
-            
-            time: O(n^2) 
-            space: O(n) beacuse store every character in the string
-            
-        improvements? 
-            two pointer method: 
-                start at end and move pointer if we see a repeat, if not move 
-                right pointer
-                
-                not sure if this will work so let's try naive method first
+        
         """
- 
+        
+        # create an emtpy set of characters
+        chars = set()
+        longest = 0
+        sofar = 0
+        
+        # iterate through string
         for i in range(len(s)):
-            for j in range(i, len(s)):
+            # reset vars
+            chars = set()
+            chars.add(s[i])
+            sofar = 1
+            
+            # check next item and update
+            for j in range (i+1, len(s)):
+                if s[j] not in chars:
+                    chars.add(s[j])
+                    sofar+=1
+                else:
+                    if sofar > longest:
+                        longest = sofar
+        return longest
+                    
                 
