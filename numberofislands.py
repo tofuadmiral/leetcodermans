@@ -48,4 +48,4 @@ class Solution:
                     counter+=1 # since we did a depth first, we found the associated island! 
                 else:
                     pass # i.e. go to the next item, keep looking for ones
-        return counter
+        return counterx
