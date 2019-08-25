@@ -18,27 +18,33 @@ class Solution(object):
         or
             start at ends, that should be the longest possible, 
             then work your way down 
+
+
         
         """
         
         # brute force, make every possible palindrome 
         
         
-        if len(s) == 1:
-            return s
-        elif not s:
-            return ""
-        
-        longest = s[0]
+        # not brute force, linear time solution
 
+        longest = 0
         for i in range(len(s)):
-            for j in range(i+1, len(s)):
-                if (j-i)+1 > len(longest):
-                    if s[i:j+1] == ''.join(reversed(s[i:j+1])):
-                        longest = s[i:j+1]
-                else:
-                    continue
+            temp = find_palindromes(self, s, i, i)
+            if len(temp) > len(longest):
+                longest = temp
+        
         return longest
-                    
+    
+    def find_palindromes(self, s, l, r):
+
+        # if we're making a palindrome rn, continue to make them
+        # once we're not, exit and return the palindrome
+        temp = ""
+        while (l>0 and r<len(s) and s[l] == s[r]):
+            l-=1
+            r+=1
+        temp = s[l:r+1]
+        return temp
                     
         
