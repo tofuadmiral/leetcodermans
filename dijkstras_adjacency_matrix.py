@@ -26,9 +26,9 @@ def dijkstras(start, end, graph):
 
     # set up tentative distances, default infinity
     for i in range(len(graph)):
-        tentative_distances[i] = float('inf')
+        tentative_distances[i] = 999999999
         unvisited.add(i)
-        print (unvisited)
+
     
     # distance from start to start is 0
     tentative_distances[start] = 0
@@ -39,10 +39,11 @@ def dijkstras(start, end, graph):
         visited.add(current)
         unvisited.discard(current)
 
+
         # loop through neighbors
         for i in range(len(graph)):
             # we haven't visited it yet nor is it unconnected, update it
-            if i not in visited and graph[current][i] != None:
+            if (i not in visited) and (graph[current][i] != None):
                 # if we've found a shorter path to it, update our distance
                 if tentative_distances[i] >= tentative_distances[current] + graph[current][i]:
                     tentative_distances[i] = tentative_distances[current] + graph[current][i]
@@ -65,7 +66,8 @@ def dijkstras(start, end, graph):
 if __name__ == "__main__":
     # graph source = http://www.mathcs.emory.edu/~cheung/Courses/171/Syllabus/11-Graph/weighted.html
 
-    graph1 = [[None, 3, None, 2, None, None, None, None, 4],
+    graph1 = [
+    [None, 3, None, 2, None, None, None, None, 4],
     [3, None, None, None, None, None, None, 4, None],
     [None, None, None, 6, None, 1, None, 2, None],
     [2, None, 6, None, 1, None, None, None, None],
@@ -75,6 +77,7 @@ if __name__ == "__main__":
     [None, 4, 2, None, None, None, None, None, None],
     [4, None, None, None, 8, None, None, None, None],
     ]
+
 
     print('shortest from 8 to 1 should be 7')
     print(' our answer is', dijkstras(8, 1, graph1))
